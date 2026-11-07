@@ -293,6 +293,16 @@ std::string Bot::run(const std::string& line) {
         int port = 0;
         in >> host >> port;
         parts_.connection.open(host, port);
+    } else if (command == "host") {
+        // Direct connect's Host: this game hosts on that port, no server needed.
+        int port = kDefaultPort;
+        in >> port;
+        return parts_.connection.start_hosting(port) ? "ok" : "error cannot host";
+    } else if (command == "direct") {
+        // Direct connect's Join, to "host:port".
+        std::string address;
+        in >> address;
+        return parts_.connection.connect_direct(address) ? "ok" : "error no host there";
     } else if (command == "create") {
         // A save's file to start from (a test's), else a new game.
         std::string path;

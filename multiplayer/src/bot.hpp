@@ -7,6 +7,8 @@
  * sends a command a line and gets one line back (JSON, or "ok" / "error ...").
  *
  *   connect HOST PORT   the connection, as Home opens it
+ *   host PORT           Direct connect: this game hosts on that port (no server)
+ *   direct HOST:PORT    Direct connect: to a game hosting there
  *   create              a party, a new game chosen
  *   join CODE           the party of that code
  *   ready               this member's Ready
